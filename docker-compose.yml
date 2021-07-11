@@ -1,0 +1,15 @@
+version: "3.9"
+services:
+  api:
+    build:
+      context: .
+      dockerfile: ./Csharp.UsersApi/Dockerfile
+    env_file:
+      - ./Csharp.UsersApi/.env
+    container_name: users-api
+    ports:
+      - "0.0.0.0:8080:80"
+    volumes:
+      - .:/source
+    expose:
+      - "80"
