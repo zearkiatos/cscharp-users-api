@@ -4,7 +4,7 @@ namespace Csharp.UsersApi.Users.Infrastructure
 {
     public interface UserRepository
     {
-        void Save(User user);
+        User Save(User user);
 
         List<User> GetUsers();
 

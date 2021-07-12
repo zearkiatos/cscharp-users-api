@@ -13,3 +13,24 @@ services:
       - .:/source
     expose:
       - "80"
+    depends_on: 
+      - mongo
+    links: 
+      - mongo
+    networks:
+      mongonetwork:
+  mongo:
+    build:
+      context: .
+      dockerfile: mongo.Dockerfile
+    env_file:
+      - mongo.env
+    volumes:
+      - "./mongo-volume:/data/db"
+    ports:
+      - "27018:27017"
+    networks:
+      mongonetwork:
+networks:
+  mongonetwork:
+    driver: bridge
