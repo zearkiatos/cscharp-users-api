@@ -40,5 +40,14 @@ namespace Csharp.UsersApi.Controllers
             var userResponse = userRepository.GetUsers();
             return Ok(userResponse);
         }
+
+        [HttpPost]
+        [Route("MySql/User")]
+        public IActionResult PostMySqlUser([FromBody] User user)
+        {
+            MySqlUserRepository userRepository = new MySqlUserRepository();
+            var userResponse = userRepository.Save(user);
+            return Ok(userResponse);
+        }
     }
 }
