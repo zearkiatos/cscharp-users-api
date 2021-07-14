@@ -18,7 +18,7 @@ services:
     links: 
       - mongo
     networks:
-      mongonetwork:
+      usersnetwork:
   mongo:
     build:
       context: .
@@ -30,7 +30,19 @@ services:
     ports:
       - "27018:27017"
     networks:
-      mongonetwork:
+      usersnetwork:
+  mysql:
+    build:
+      context: .
+      dockerfile: mysql.Dockerfile
+    env_file:
+      - mysql.env
+    ports:
+      - "3307:3306"
+    volumes:
+      - "./mysql_volume:/var/lib/mysql"
+    networks:
+      usersnetwork:
 networks:
-  mongonetwork:
+  usersnetwork:
     driver: bridge

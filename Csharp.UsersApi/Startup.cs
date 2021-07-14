@@ -40,6 +40,10 @@ namespace Csharp.UsersApi
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
+                app.UseCors(x => x
+                    .AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader());
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Csharp.UsersApi v1"));
             }
 
