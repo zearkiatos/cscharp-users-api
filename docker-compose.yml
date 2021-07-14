@@ -38,7 +38,7 @@ services:
     env_file:
       - mysql.env
     ports:
-      - "3306:3306"
+      - "3307:3306"
     volumes:
       - "./mysql_volume:/var/lib/mysql"
     networks:

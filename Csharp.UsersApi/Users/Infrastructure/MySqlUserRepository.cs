@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Csharp.UsersApi.Users.Domain;
-using Csharp.UsersApi.Users.Infrastructure.MySql;
+using Csharp.UsersApi.Users.Infrastructure.Contexts;
 using Microsoft.EntityFrameworkCore;
 
 namespace Csharp.UsersApi.Users.Infrastructure
@@ -13,20 +13,21 @@ namespace Csharp.UsersApi.Users.Infrastructure
         public MySqlUserRepository()
         {
             this.userContext = new UserContext();
+            this.userContext.Database.EnsureCreated();
         }
         public User GetUser(string id)
         {
-            return Task.Run( () => {return this.userContext.DbUser.FirstOrDefaultAsync(x => x.Id == id); }).Result;
+            return Task.Run( () => {return this.userContext.Users.FirstOrDefaultAsync(x => x.Id == id); }).Result;
         }
 
         public List<User> GetUsers()
         {
-            return Task.Run( () => {return this.userContext.DbUser.ToListAsync(); }).Result;
+            return Task.Run( () => {return this.userContext.Users.ToListAsync(); }).Result;
         }
 
         public User Save(User user)
         {
-           this.userContext.Add(user);
+           this.userContext.Users.Add(user);
 
            this.userContext.SaveChanges();
 
