@@ -14,7 +14,7 @@ namespace Csharp.UsersApi.Users.Domain
 
         }
         [JsonProperty("id")]
-        private string id;
+        protected string id;
         public string Id
         {
             get { return id; }
