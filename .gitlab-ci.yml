@@ -3,7 +3,7 @@ variables:
   DOCKER_TLS_CERTDIR: "/certs"
 
 services:
-  - docker:19.03.12-dind
+  - docker:dind
 stages:
   - install
   - test
@@ -24,6 +24,7 @@ test-app:
     - install-dependencies
   script:
     - echo "Testing the app 🧪"
+    - docker info
     - apt-get update
     - apt-get install build-essential curl -y
     - curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
