@@ -19,4 +19,4 @@ test-app:
     - install-dependencies
   script:
     - echo "Testing the app 🧪"
-    - dotnet test
+    - make run-test

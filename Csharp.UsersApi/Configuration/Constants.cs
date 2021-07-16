@@ -3,7 +3,7 @@ namespace Csharp.UsersApi.Configuration
 {
     public static class Constants
     {
-        public static string MONGO_CONNECTION_STRING = String.IsNullOrEmpty(Environment.GetEnvironmentVariable("ASPNETCORE_MONGO_CONNECTION_STRING")) ? "mongodb://localhost" : Environment.GetEnvironmentVariable("ASPNETCORE_MONGO_CONNECTION_STRING");
+        public static string MONGO_CONNECTION_STRING = String.IsNullOrEmpty(Environment.GetEnvironmentVariable("ASPNETCORE_MONGO_CONNECTION_STRING")) ? "mongodb://admin:password@localhost" : Environment.GetEnvironmentVariable("ASPNETCORE_MONGO_CONNECTION_STRING");
 
         public static string MONGO_DATABASE = String.IsNullOrEmpty(Environment.GetEnvironmentVariable("ASPNETCORE_MONGO_DATABASE")) ? "users" : Environment.GetEnvironmentVariable("ASPNETCORE_MONGO_DATABASE");
 

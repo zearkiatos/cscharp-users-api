@@ -13,28 +13,33 @@ namespace Csharp.UsersApi.Users.Domain
             this.email = email;
 
         }
+
         [JsonProperty("id")]
         protected string id;
         public string Id
         {
+            set { id = value; }
             get { return id; }
         }
         [JsonProperty("name")]
         private string name;
         public string Name
         {
+            set { name = value; }
             get { return name; }
         }
         [JsonProperty("lastname")]
         private string lastname;
         public string Lastname
         {
+            set { lastname = value; }
             get { return lastname; }
         }
         [JsonProperty("email")]
         private string email;
         public string Email
         {
+            set { email = value; }
             get { return email; }
         }
 
