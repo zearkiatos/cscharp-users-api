@@ -7,7 +7,7 @@ docker-test-up:
 	docker-compose -f docker-compose.test.yml up --build -d
 
 docker-test-down:
-	docker-compose down
+	docker-compose -f docker-compose.test.yml down
 
 test:
 	dotnet test
