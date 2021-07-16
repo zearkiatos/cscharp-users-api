@@ -54,11 +54,11 @@ namespace Csharp.UsersApi.Tests.Users.Domain
             .AddId(Guid.NewGuid().ToString())
             .Build());
 
-            List<User> userExpected = this.user.Find(x => !String.IsNullOrEmpty(x.Id)).ToList();
+            List<User> userResult = userRepository.GetUsers();
 
-            Assert.Equal(userExpected.Count, 2);
-            Assert.Equal(userExpected.ToArray()[0].Name, "Pedro");
-            Assert.Equal(userExpected.ToArray()[1].Id, "fb6ba091-ecfd-4b93-be0d-348a2c5f700c");
+            Assert.Equal(userResult.Count, 2);
+            Assert.Equal(userResult.ToArray()[0].Id, "fb6ba091-ecfd-4b93-be0d-348a2c5f700c");
+            Assert.Equal(userResult.ToArray()[1].Name, "Pedro");
             this.ClearData();
         }
 
@@ -74,9 +74,9 @@ namespace Csharp.UsersApi.Tests.Users.Domain
             this.user.InsertOne(new UserBuilder().Build());
             this.user.InsertOne(userMocked);
 
-            User userExpected = this.user.Find(x => x.Id == userMocked.Id).FirstOrDefault();
+            User userResult = userRepository.GetUser(userMocked.Id);
 
-            Assert.Equal(userExpected.Serialization(), userMocked.Serialization());
+            Assert.Equal(userResult.Serialization(), userMocked.Serialization());
             this.ClearData();
         }
     }
