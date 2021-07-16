@@ -7,7 +7,7 @@ using Csharp.UsersApi.Shared.Utils;
 using Csharp.UsersApi.Tests.Users.Domain.Mock;
 namespace Csharp.UsersApi.Tests.Users.Domain
 {
-    public class UserTest
+    public class UserUnitTest
     {
         [Fact]
         public void Should_Create_And_Return_Serialized_User_String()
