@@ -6,8 +6,6 @@ stages:
 install-dependencies:
   stage: install
   script:
-    - apt-get update
-    - apt-get install build-essential -y
     - dotnet restore
     - dotnet publish -c release -o /app --no-restore
   artifacts:
@@ -21,4 +19,6 @@ test-app:
     - install-dependencies
   script:
     - echo "Testing the app 🧪"
+    - apt-get update
+    - apt-get install build-essential -y
     - make run-test
