@@ -6,7 +6,7 @@ stages:
 install-dependencies:
   stage: install
   script:
-    - apt-get install build-essential
+    - apt-get -y install make
     - dotnet restore
     - dotnet publish -c release -o /app --no-restore
   artifacts:
