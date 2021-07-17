@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Csharp.UsersApi.Users.Domain;
 using Csharp.UsersApi.Users.Infrastructure;
+using Csharp.UsersApi.Users.Infrastructure.Contexts;
 using Csharp.UsersApi.Configuration;
 
 namespace Csharp.UsersApi.Controllers
@@ -45,7 +46,7 @@ namespace Csharp.UsersApi.Controllers
         [Route("MySql/User")]
         public IActionResult PostMySqlUser([FromBody] User user)
         {
-            MySqlUserRepository userRepository = new MySqlUserRepository();
+            MySqlUserRepository userRepository = new MySqlUserRepository(new UserContext());
             var userResponse = userRepository.Save(user);
             return Ok(userResponse);
         }
@@ -54,7 +55,7 @@ namespace Csharp.UsersApi.Controllers
         [Route("MySql/User")]
         public IActionResult GetMySqlUser()
         {
-            MySqlUserRepository userRepository = new MySqlUserRepository();
+            MySqlUserRepository userRepository = new MySqlUserRepository(new UserContext());
             var userResponse = userRepository.GetUsers();
             return Ok(userResponse);
         }
@@ -63,7 +64,7 @@ namespace Csharp.UsersApi.Controllers
         [Route("MySql/User/{id}")]
         public IActionResult GetMySqlUser(string id)
         {
-            MySqlUserRepository userRepository = new MySqlUserRepository();
+            MySqlUserRepository userRepository = new MySqlUserRepository(new UserContext());
             var userResponse = userRepository.GetUser(id);
             return Ok(userResponse);
         }

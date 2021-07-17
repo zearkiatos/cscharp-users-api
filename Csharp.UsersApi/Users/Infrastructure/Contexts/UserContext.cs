@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Csharp.UsersApi.Users.Domain;
 using Csharp.UsersApi.Configuration;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace Csharp.UsersApi.Users.Infrastructure.Contexts
 {

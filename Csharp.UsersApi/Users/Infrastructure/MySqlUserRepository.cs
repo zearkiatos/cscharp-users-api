@@ -1,8 +1,10 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using Csharp.UsersApi.Users.Domain;
 using Csharp.UsersApi.Users.Infrastructure.Contexts;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 
 namespace Csharp.UsersApi.Users.Infrastructure
 {
@@ -10,9 +12,9 @@ namespace Csharp.UsersApi.Users.Infrastructure
     {
         private UserContext userContext;
 
-        public MySqlUserRepository()
+        public MySqlUserRepository(DbContext context)
         {
-            this.userContext = new UserContext();
+            this.userContext = (UserContext)context;
             this.userContext.Database.EnsureCreated();
         }
         public User GetUser(string id)
