@@ -21,7 +21,7 @@ test-app:
   script:
     - echo "Testing the app 🧪"
     - apt-get update
-    - apt-get install build-essential apt-transport-https ca-certificates curl gnupg lsb-release -y
+    - apt-get install build-essential apt-transport-https ca-certificates curl gnupg lsb-release iptables libdevmapper1.02.1 libltdl7 -y
     - apt-get update
     - curl -f https://download.docker.com/linux/ubuntu/dists/artful/pool/stable/amd64/docker-ce_18.06.3\~ce\~3-0\~ubuntu_amd64.deb -o docker.deb
     - dpkg -i docker.deb
