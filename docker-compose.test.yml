@@ -1,0 +1,25 @@
+version: "3.9"
+services:
+  mongo:
+    build:
+      context: .
+      dockerfile: mongo.Dockerfile
+    env_file:
+      - mongo.env
+    ports:
+      - "27018:27017"
+    networks:
+      usersnetwork:
+  mysql:
+    build:
+      context: .
+      dockerfile: mysql.Dockerfile
+    env_file:
+      - mysql.env
+    ports:
+      - "3307:3306"
+    networks:
+      usersnetwork:
+networks:
+  usersnetwork:
+    driver: bridge

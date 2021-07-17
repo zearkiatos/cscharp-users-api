@@ -1,0 +1,48 @@
+version: "3.9"
+services:
+  api:
+    build:
+      context: .
+      dockerfile: ./Csharp.UsersApi/Dockerfile
+    env_file:
+      - ./Csharp.UsersApi/.env
+    container_name: users-api
+    ports:
+      - "0.0.0.0:8080:80"
+    volumes:
+      - .:/source
+    expose:
+      - "80"
+    depends_on: 
+      - mongo
+    links: 
+      - mongo
+    networks:
+      usersnetwork:
+  mongo:
+    build:
+      context: .
+      dockerfile: mongo.Dockerfile
+    env_file:
+      - mongo.env
+    volumes:
+      - "./mongo-volume:/data/db"
+    ports:
+      - "27018:27017"
+    networks:
+      usersnetwork:
+  mysql:
+    build:
+      context: .
+      dockerfile: mysql.Dockerfile
+    env_file:
+      - mysql.env
+    ports:
+      - "3307:3306"
+    volumes:
+      - "./mysql_volume:/var/lib/mysql"
+    networks:
+      usersnetwork:
+networks:
+  usersnetwork:
+    driver: bridge
